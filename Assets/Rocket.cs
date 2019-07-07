@@ -23,6 +23,8 @@ public class Rocket : MonoBehaviour
     [SerializeField] private ParticleSystem deathParticles;
     [SerializeField] private ParticleSystem successParticles;
 
+    bool collisionsDisabled = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +40,28 @@ public class Rocket : MonoBehaviour
             RespondToThrustInput();
             RespondToRotateInput();
         }
+
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKeys();
+        }
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionsDisabled = !collisionsDisabled;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) { return; }
+        if (state != State.Alive || collisionsDisabled) { return; }
         switch (collision.gameObject.tag)
         {
             case "Friendly":
