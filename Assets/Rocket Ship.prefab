@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rcsThrust: 100
-  mainThrust: 20
+  mainThrust: 1000
   mainEngine: {fileID: 8300000, guid: 767412f19ca618f458334ca0dd067f58, type: 3}
   deathSound: {fileID: 8300000, guid: 4ae4ba42c28337e439a1dc221561935f, type: 3}
   successSound: {fileID: 8300000, guid: d2c5fb151dc2b66459af8a93d488419d, type: 3}
